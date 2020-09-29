@@ -1,4 +1,4 @@
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from .models import Todo
@@ -15,7 +15,7 @@ def index(request):
 def add_todo(request):
     data = request.POST["task_entry"]
     entry = Todo.objects.create(added_date=timezone.now(), entry_text=data)
-    length_of_todos = Todo.objects.all().count()
+    # length_of_todos = Todo.objects.all().count()
     return HttpResponseRedirect(reverse("index"))
 
 @csrf_exempt
