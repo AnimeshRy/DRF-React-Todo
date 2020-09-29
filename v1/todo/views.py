@@ -14,11 +14,14 @@ def index(request):
 @csrf_exempt
 def add_todo(request):
     data = request.POST["task_entry"]
-    entry = Todo.objects.create(added_date=timezone.now(), entry_text=data)
+    if data:
+        entry = Todo.objects.create(added_date=timezone.now(), entry_text=data)
     # length_of_todos = Todo.objects.all().count()
     return HttpResponseRedirect(reverse("index"))
 
 @csrf_exempt
 def del_todo(request, todo_id):
-    entry = Todo.objects.filter(id=todo_id).delete()
+    entry = Todo.objects.filter(id=todo_id)
+    if entry:
+        entry.delete()
     return HttpResponseRedirect(reverse("index"))
