@@ -1,0 +1,31 @@
+{% extends "todo/layout.html" %}
+
+{% block body %}
+<div class="center-column">
+<form method="POST" action="{% url 'todos:index' %}" autocomplete="off">
+    {% csrf_token %}
+    {{ form.title }}
+    <input type="submit" name="Create New Task">
+</form>
+
+<div class="todo-list">
+{% for item in alltasks %}  
+        <div class="item-row">
+            
+            {% if item.complete == True %}
+                <strike>{{ item.title }}</strike>
+                <small>{{ item.time_added|date:"F d, Y" }}</small>
+            {% else %}
+                <span>{{ item.title }}</span>
+                <small>{{ item.time_added|date:"F d, Y" }}</small>
+            {% endif %}
+
+            <a class="btn btn-sm btn-info" href="{% url 'todos:update_task' item.id %}"">Update</a>
+            <form action=" {% url 'todos:delete_task' item.id %}">
+                <button type="submit" class="btn btn-primary btn-sm btn-danger">Delete</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
