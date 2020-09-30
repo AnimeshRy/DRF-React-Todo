@@ -1,7 +1,12 @@
 {% extends 'todo/layout.html' %}
 
 {% block body %}
-<h2>Update Task</h2>
+<style>
+    * {
+        margin: 15px;
+    }
+</style>
+<h3>Update Task</h2>
 <form method="POST" action="{% url 'todos:update_task' currTask.id %}">
     {% csrf_token %}
     {{ form }}

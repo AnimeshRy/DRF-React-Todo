@@ -1,11 +1,14 @@
 {% extends "todo/layout.html" %}
 
 {% block body %}
+
 <div class="center-column">
+    <h1 style="text-align: center;">Todo App </h1>
+    <h4>Enter Tasks Below</h4>
 <form method="POST" action="{% url 'todos:index' %}" autocomplete="off">
     {% csrf_token %}
     {{ form.title }}
-    <input type="submit" name="Create New Task">
+    <input type="submit" value="Add Task">
 </form>
 
 <div class="todo-list">
@@ -20,7 +23,7 @@
                 <small>{{ item.time_added|date:"F d, Y" }}</small>
             {% endif %}
 
-            <a class="btn btn-sm btn-info" href="{% url 'todos:update_task' item.id %}"">Update</a>
+            <a class="btn btn-sm btn-info" href="{% url 'todos:update_task' item.id %}">Update</a>
             <form action=" {% url 'todos:delete_task' item.id %}">
                 <button type="submit" class="btn btn-primary btn-sm btn-danger">Delete</button>
             </form>
