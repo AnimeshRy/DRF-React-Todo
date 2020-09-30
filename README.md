@@ -4,16 +4,18 @@ A dead simple Django ToDo Web App
 This is a sample project that a novice django developer can use to get started.
 
 ## Working
+(Version 2)
 
-
+![Django to do](v2/todolist/results/result.gif)
 
 ## Features
 
 - Dead simple
-- Easily add, delete
+- CRUD
 - Simple UI
 - Blazing fast
 
+[Checkout the Old Version!](https://github.com/AnimeshRy/Django-To-Do/tree/master/v1)
 ## Setup
 
 - Download the files from this repo
